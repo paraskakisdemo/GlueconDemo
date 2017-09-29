@@ -49,10 +49,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Pet'
-        default:
-          description: unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+ 
     post:
       description: Creates a new pet in the store.  Duplicates are allowed
       operationId: addPet
@@ -68,10 +65,8 @@ paths:
           description: pet response
           schema:
             $ref: '#/definitions/Pet'
-        default:
-          description: unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+
+
   /pets/{id}:
     get:
       description: Returns a user based on a single ID, if the user does not have access to the pet
@@ -88,10 +83,7 @@ paths:
           description: pet response
           schema:
             $ref: '#/definitions/Pet'
-        default:
-          description: unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+
     delete:
       description: deletes a single pet based on the ID supplied
       operationId: deletePet
@@ -105,10 +97,7 @@ paths:
       responses:
         204:
           description: pet deleted
-        default:
-          description: unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+
 definitions:
   Pet:
     allOf:
@@ -126,14 +115,4 @@ definitions:
       name:
         type: string
       tag:
-        type: string
-  Error:
-    required:
-      - code
-      - message
-    properties:
-      code:
-        type: integer
-        format: int32
-      message:
         type: string
